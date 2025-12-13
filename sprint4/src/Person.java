@@ -1,7 +1,9 @@
+import java.util.Objects;
+
 public class Person {
-    private final String name;
-    private final String surname;
-    private final Gender gender;
+    protected final String name;
+    protected final String surname;
+    protected final Gender gender;
 
     public Person(String name, String surname, Gender gender) {
         this.name = name;
@@ -21,4 +23,21 @@ public class Person {
     public String toString() {
         return name +" "+ surname + " ";
     }
+
+    //переопределил методы, смогу использовать в наследниках
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)  return true;
+        if (obj == null) return false;
+        if (this.getClass() != obj.getClass()) return false;
+        Actor otherActor = (Actor) obj;
+        return Objects.equals(getName(), otherActor.getName()) &&
+                Objects.equals(getSurname(), otherActor.getSurname());
+    }
+
 }

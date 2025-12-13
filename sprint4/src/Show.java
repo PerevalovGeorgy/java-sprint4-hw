@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 public class Show {
-    private String title;
-    private int duration;
-    private Director director;
-    private ArrayList<Actor> listOfActors;
+    protected String title;
+    protected int duration;
+    protected Director director;
+    protected ArrayList<Actor> listOfActors;
 
     public Show(String title, int duration, Director director, ArrayList<Actor> listOfActors) {
         this.title = title;
@@ -33,20 +33,23 @@ public class Show {
         }
     }
 
+    //будем заменять всех актеров с фамилией, пробегая по их списку
     public void replaceActor(Actor newActor, String surNameActor) {
-        int count = 0;
-        int order = -1;
-        for (Actor actor : listOfActors) {
-            if (actor.getSurname().equals(surNameActor)) {
-                count ++;
-                order ++;
+        for (int i = 0; i < listOfActors.size(); i++) {
+            Actor thisActor = listOfActors.get(i);
+            if (thisActor.getSurname().equals(surNameActor)) {
+                listOfActors.set(i, newActor);
+            } else {
+                System.out.println("Актера по фамилии " + surNameActor + " нет в постановке");
+                System.out.println();
             }
         }
-        if (count > 0) {
-            listOfActors.set(order, newActor);
-        } else {
-            System.out.println("Актера по фамилии " + surNameActor +" нет в постановке");
-            System.out.println();
-        }
     }
+
+    //у режесера есть toString, тут сделал метод печати режисера
+    public void printDirector() {
+        System.out.println(director);
+    }
+
+
 }

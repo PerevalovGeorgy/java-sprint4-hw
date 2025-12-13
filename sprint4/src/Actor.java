@@ -1,7 +1,7 @@
 import java.util.Objects;
 
 public class Actor extends Person {
-    private final int height;
+    protected final int height;
 
     public Actor(String name, String surname, Gender gender, int height) {
         super(name, surname, gender);
@@ -17,19 +17,17 @@ public class Actor extends Person {
         return  super.toString() + "(" + height + ")";
     }
 
+    // переопределил с наследованием
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)  return true;
-        if (obj == null) return false;
-        if (this.getClass() != obj.getClass()) return false;
-        Actor otherActor = (Actor) obj;
-        return Objects.equals(getName(), otherActor.getName()) &&
-                Objects.equals(getSurname(), otherActor.getSurname()) &&
-                (height == otherActor.height);
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Actor actor = (Actor) o;
+        return height == actor.height;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName(), getSurname(), getHeight());
+        return Objects.hash(super.hashCode(), height);
     }
 }

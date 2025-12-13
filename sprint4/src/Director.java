@@ -7,9 +7,7 @@ public class Director extends Person{
         this.numberOfShows = numberOfShows;
     }
 
-    public void printDirector() {
-        System.out.println(getName() +' '+ getSurname());
-    }
+    //убрал метод вывода режисера
 
     @Override
     public String toString() {
