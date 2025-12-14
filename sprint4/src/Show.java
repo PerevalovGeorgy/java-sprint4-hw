@@ -43,7 +43,7 @@ public class Show {
             }
         }
 
-        if (count.size()>0) {
+        if (!count.isEmpty()) {
             for (int i : count) {
                 listOfActors.set(i, newActor);
             }
