@@ -33,7 +33,7 @@ public class Show {
         }
     }
 
-    //будем заменять всех актеров с фамилией, пробегая по их списку
+    //теперь меняем актеров так = пробегаем по списку и запоминаем индексы актеров которых надо заменить, после меняем
     public void replaceActor(Actor newActor, String surNameActor) {
         ArrayList<Integer> count = new ArrayList<>();
         for (int i = 0; i < listOfActors.size(); i++) {
