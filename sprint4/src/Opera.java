@@ -1,0 +1,20 @@
+import java.util.ArrayList;
+
+public class Opera extends MusicalShow {
+    protected int choirSize;
+
+    public Opera(String title, int duration, Director director, ArrayList<Actor> listOfActors, MusicAuthor musicAuthor,
+                 String librettoText, int choirSize) {
+        super(title, duration, director, listOfActors, musicAuthor, librettoText);
+        this.choirSize = choirSize;
+    }
+
+    @Override
+    public void printActors() {
+        System.out.println("Актеры оперы: ");
+        for(Actor actor : getListOfActors()) {
+            System.out.println(actor);
+        }
+        System.out.println();
+    }
+}
