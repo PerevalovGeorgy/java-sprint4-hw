@@ -35,14 +35,21 @@ public class Show {
 
     //будем заменять всех актеров с фамилией, пробегая по их списку
     public void replaceActor(Actor newActor, String surNameActor) {
+        ArrayList<Integer> count = new ArrayList<>();
         for (int i = 0; i < listOfActors.size(); i++) {
             Actor thisActor = listOfActors.get(i);
             if (thisActor.getSurname().equals(surNameActor)) {
-                listOfActors.set(i, newActor);
-            } else {
-                System.out.println("Актера по фамилии " + surNameActor + " нет в постановке");
-                System.out.println();
+                count.add(i);
             }
+        }
+
+        if (count.size()>0) {
+            for (int i : count) {
+                listOfActors.set(i, newActor);
+            }
+        } else {
+            System.out.println("Актера по фамилии " + surNameActor + " нет в постановке");
+            System.out.println();
         }
     }
 
